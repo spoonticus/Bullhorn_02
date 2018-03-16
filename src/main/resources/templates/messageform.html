@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Bullhorn</title>
+</head>
+<body>
+<form action="#" th:action="@{/process}"
+      th:object="${message}"
+      method="post">
+    <input type="hidden" th:field="*{id}" />
+    Name: <input type="text" th:field="*{name}" />
+    <span th:if="${#fields.hasErrors('name')}"
+          th:errors="*{name}"></span><br />
+
+    Message: <input type="text" th:field="*{statement}" />
+    <span th:if="${#fields.hasErrors('statement')}"
+          th:errors="*{statement}"></span><br />
+    Posted Date: <p>
+    <script> document.write(new Date().toLocaleDateString());</script>
+</p><!-- testing -->
+    <!--<span th:if="${#fields.hasErrors('createdDate')}"
+          th:errors="*{createdDate}"></span><br />-->
+    <br />
+    <input type="submit" value="Post" />
+</form>
+
+</body>
+</html>
